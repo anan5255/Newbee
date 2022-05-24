@@ -25,7 +25,7 @@ public class UserAPI {
     private UserService userService;
 
     @Autowired
-    public UserAPI(PhoneUtil phoneUtil, ResultGenerator resultGenerator) {
+    public UserAPI(PhoneUtil phoneUtil, ResultGenerator resultGenerator, UserService userService) {
         this.phoneUtil = phoneUtil;
         this.resultGenerator = resultGenerator;
         this.userService = userService;
@@ -54,11 +54,12 @@ public class UserAPI {
     }
 
     @PostMapping("/user/login")
-    public Result login(@RequestBody @Valid UserLoginParam param){
-        if (phoneUtil.isNotPhoneNumber(param.getLoginName())){
+    public Result login(@RequestBody @Valid UserLoginParam param) {
+        if (phoneUtil.isNotPhoneNumber(param.getLoginName())) {
             return resultGenerator.genFailResult(ServiceEnum.LOGIN_NAME_IS_NOT_PHONE.getResult());
         }
-
-
+        String loginResult = userService.login(param.getLoginName(), param.getPassword());
     }
+
+
 }

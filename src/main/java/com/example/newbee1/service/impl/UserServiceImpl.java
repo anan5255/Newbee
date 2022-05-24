@@ -5,6 +5,7 @@ import com.example.newbee1.domain.User;
 import com.example.newbee1.domain.UserToken;
 import com.example.newbee1.domain.repo.UserRepo;
 import com.example.newbee1.domain.repo.UserTokenRepo;
+import com.example.newbee1.service.UserService;
 import com.example.newbee1.uitl.NumberUtil;
 import com.example.newbee1.uitl.SystemUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     private UserRepo userRepo;
 
     private UserTokenRepo userTokenRepo;
@@ -39,7 +40,7 @@ public class UserServiceImpl {
         registerUser.setLoginName(loginName);
         registerUser.setNickName(loginName);
         registerUser.setIntroduceSign("Welcome!");
-        registerUser.setPasswordMd5(password);
+        registerUser.setPassword(password);
         if (userRepo.save(registerUser) != null) {
             return ServiceEnum.SUCCESS.getResult();
         }

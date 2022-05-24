@@ -20,7 +20,7 @@ public class User {
 
     private String loginName;
 
-    private String passwordMd5;
+    private String password;
 
     private String introduceSign;
 
