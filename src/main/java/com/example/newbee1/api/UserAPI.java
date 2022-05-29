@@ -53,13 +53,13 @@ public class UserAPI {
 
     }
 
-    @PostMapping("/user/login")
-    public Result login(@RequestBody @Valid UserLoginParam param) {
-        if (phoneUtil.isNotPhoneNumber(param.getLoginName())) {
-            return resultGenerator.genFailResult(ServiceEnum.LOGIN_NAME_IS_NOT_PHONE.getResult());
-        }
-        String loginResult = userService.login(param.getLoginName(), param.getPassword());
-    }
+//  @PostMapping("/user/login")
+//    public Result login(@RequestBody @Valid UserLoginParam param) {
+//        if (phoneUtil.isNotPhoneNumber(param.getLoginName())) {
+//            return resultGenerator.genFailResult(ServiceEnum.LOGIN_NAME_IS_NOT_PHONE.getResult());
+//        }
+//        String loginResult = userService.login(param.getLoginName(), param.getPassword());
+//    }
 
 
 }
