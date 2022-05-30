@@ -18,7 +18,6 @@ public class SystemUtil {
             if (result.length() == 31) {
                 result = result + "-";
             }
-            System.out.println(result);
             return result;
         } catch (Exception e) {
             return null;
