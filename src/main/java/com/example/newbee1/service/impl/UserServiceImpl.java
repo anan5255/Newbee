@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
 
 
     private String getNewToken(String timeStr, Long userId) {
-        String src = timeStr + userId + NumberUtil.genRandomNum(4);
-        return SystemUtil.genToken(src);
+        String src = timeStr + userId + numberUtil.genRandomNum(4);
+        return systemUtil.genToken(src);
     }
 }

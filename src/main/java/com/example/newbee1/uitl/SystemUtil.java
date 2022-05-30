@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 
 @Component
 public class SystemUtil {
-    public static String genToken(String src) {
+    public String genToken(String src) {
         if (null == src || "".equals(src)) {
             return null;
         }

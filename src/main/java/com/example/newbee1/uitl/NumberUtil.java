@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class NumberUtil {
-    public static int genRandomNum(int length) {
+    public int genRandomNum(int length) {
         int num = 1;
         double random = Math.random();
         if (random < 0.1) {
