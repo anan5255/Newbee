@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @Data
@@ -14,7 +15,7 @@ public class User {
 
     @Id
     @GeneratedValue
-    private Long userId;
+    private Long id;
 
     private String nickName;
 

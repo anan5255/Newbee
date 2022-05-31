@@ -9,4 +9,5 @@ public interface UserTokenRepo extends CrudRepository<UserToken, Long> {
 
     UserToken save(UserToken userToken);
 
+    UserToken findUserTokenByToken(String token);
 }

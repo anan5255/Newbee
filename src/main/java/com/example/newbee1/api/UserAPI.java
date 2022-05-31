@@ -2,19 +2,20 @@ package com.example.newbee1.api;
 
 import com.example.newbee1.api.param.UserLoginParam;
 import com.example.newbee1.api.param.UserRegisterParam;
+import com.example.newbee1.api.vo.UserVO;
 import com.example.newbee1.common.Constants;
 import com.example.newbee1.common.ServiceEnum;
+import com.example.newbee1.config.annotation.TokenToUser;
+import com.example.newbee1.domain.User;
 import com.example.newbee1.service.UserService;
 import com.example.newbee1.uitl.PhoneUtil;
 import com.example.newbee1.uitl.Result;
 import com.example.newbee1.uitl.ResultGenerator;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 @Slf4j
@@ -72,6 +73,14 @@ public class UserAPI {
       }
       //登录失败
       return resultGenerator.genFailResult(loginResult);
+  }
+
+  @GetMapping("/user/info")
+    public Result<UserVO> getUserDetail(@TokenToUser User user) {
+        //已登陆则直接返回
+        UserVO userVO = new UserVO();
+      BeanUtils.copyProperties(user, userVO);
+      return resultGenerator.genSuccessResult(userVO);
   }
 
 }
